@@ -11,7 +11,7 @@ bot = telebot.TeleBot(token)
 
 # Start
 @bot.message_handler(commands=['start'])
-def start(message):
+def start(message) -> None:
     bot.send_message(message.chat.id, f"Привет, {message.from_user.first_name}")
     conn = sqlite3.connect('Voice.db')
     cur = conn.cursor()
@@ -28,12 +28,12 @@ def start(message):
 
 # Получение информации о пользователе
 @bot.message_handler(commands=['user_info'])
-def user_information(message):
+def user_information(message) -> None:
     bot.send_message(message.chat.id, message)
 
 # Список доступных языков	
 @bot.message_handler(commands=['languages'])
-def language_settings(message):
+def language_settings(message) -> None:
     text = 'Список доступных языков: \n\
         <b>Английский</b> - /language_en\n\
         <b>Немецкий</b> - /language_de\n\
